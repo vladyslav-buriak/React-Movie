@@ -10,12 +10,13 @@ type Movies {
 }
 
 type Movie {
+  id: ID!
   title: String!
-  popularity: Int!
+  popularity: String!
   releaseDate: String!
   overview: String
   posterPath: String!
-  genres: [Genre]!
+  genre: [Genre]!
 }
 
 type Genre {
