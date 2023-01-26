@@ -1,5 +1,5 @@
 type Query {
-  moviesDate: Movies
+  moviesDate(currentPage: Int): Movies
 }
 
 type Movies {
@@ -12,7 +12,7 @@ type Movies {
 type Movie {
   id: ID!
   title: String!
-  popularity: String!
+  popularity: String
   releaseDate: String!
   overview: String
   posterPath: String!

@@ -21,6 +21,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 export const Navigation = () => {
   const [isOpenDrawer, isSetOpenDrawer] = useState<boolean>(false);
+
   const navItems: Array<string> = ["Home", "Settings", "Other"];
 
   const list = () => (

@@ -8,8 +8,6 @@ import { Container } from "@mui/material";
 import { Box } from "@mui/material";
 
 const App: FC = () => {
-
-
   return (
     <div className="App">
       <Box

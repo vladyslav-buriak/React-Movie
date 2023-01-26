@@ -1,7 +1,7 @@
 const { getPopulars } = require("../modules/movies");
 
 async function moviesDate(parent, args, context) {
-  const data = await getPopulars();
+  const data = await getPopulars(args.currentPage);
 
   return data;
 }
