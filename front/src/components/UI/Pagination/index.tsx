@@ -1,11 +1,10 @@
 import * as React from "react";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { memo } from "react";
 
 interface IPaginationProps {
   currentPage: number;
-  pages: any;
+  pages: number;
   onPageChange: (e: React.ChangeEvent<unknown>, p: number) => void;
 }
 export const PaginationRounded: React.FC<IPaginationProps> = ({

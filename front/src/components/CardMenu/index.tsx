@@ -28,11 +28,15 @@ export const CardMenu = ({ children }: ChildrenProps) => {
         onClick={handleClick}
         sx={{
           position: "absolute",
-          right: 0,
-          top: 0,
+          right: ".25rem",
+          top: ".25rem",
           backgroundColor: "rgba(255,255,255,0.3)",
           width: "30px",
           height: "30px",
+          background: "rgba(248, 20, 201, 0.50)",
+          "&:hover": {
+            background: "rgba(248, 20, 201, 1)",
+          },
         }}
       >
         <MoreVertIcon />
@@ -45,6 +49,7 @@ export const CardMenu = ({ children }: ChildrenProps) => {
         anchorEl={position}
         open={isMenuOpen}
         onClose={handleClose}
+        onClick={handleClose}
         PaperProps={{
           style: {
             maxHeight: 48 * 4.5,

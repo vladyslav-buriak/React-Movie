@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { IMovieProps } from "../../types";
-import { FC, useCallback } from "react";
+import { useCallback } from "react";
 
 export const useSelectedMovies = () => {
   const [selectedMovie, setSelectedMovie] = useState<IMovieProps[]>([]);

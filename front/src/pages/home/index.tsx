@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material/";
 import { Paper } from "@mui/material/";
@@ -7,20 +6,21 @@ import { MovieCard } from "../../components";
 import { GetMovies } from "./queries";
 import { useQuery } from "@apollo/client";
 import { IMovieProps } from "../../types";
-import { PaginationRounded } from "../../components/Pagination";
 import { useState } from "react";
 import { useSelectedMovies } from "../../hooks/useSelectedMovies";
 import { NoSelect } from "../../components";
-import { MovieSelectList } from "../../components/MovieSelectList";
+import { MovieSelectList } from "../../components/";
+import { SkeletonMovies } from "../../components/UI/";
+import { PaginationRounded } from "../../components/UI/";
 
 const SelectWrapp = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
   ...theme.typography.body2,
-  padding: theme.spacing(1),
   color: theme.palette.text.secondary,
   height: "calc(100vh - 200px)",
   position: "sticky",
-  top: theme.spacing(2),
+  top:'1rem',
+  right:0,
   display: "flex",
   flexDirection: "column",
 }));
@@ -44,15 +44,21 @@ export const Home = () => {
         </Grid>
         <Grid item xs={12} md={8}>
           <Paper>
-            <Grid sx={{ padding: "1rem" }} container spacing={2}>
+            <Grid sx={{ padding: "1rem" }} container columnSpacing={3}>
               {loading ? (
-                <h2>Loading...</h2>
+                [...new Array(8)].map((_, i) => {
+                  return (
+                    <Grid key={i} item xs={12} sm={4} md={3}>
+                      <SkeletonMovies />
+                    </Grid>
+                  );
+                })
               ) : error ? (
                 <h2>Error</h2>
               ) : (
                 data.moviesDate.results.map((movie: IMovieProps) => {
                   return (
-                    <Grid key={movie.id} item xs={12} sm={4} md={3}>
+                    <Grid key={movie.id} item xs={12} sm={4} md={3} mb={3}>
                       <MovieCard movie={movie} addMovie={addMovie} />
                     </Grid>
                   );

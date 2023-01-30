@@ -4,6 +4,7 @@ import { MovieCard } from "./MovieCard";
 import { CardMenu } from "./CardMenu";
 import { MovieSelectCard } from "./MovieSelectCard";
 import { NoSelect } from "./NoSelect";
+import { MovieSelectList } from "./MovieSelectList";
 
 //PAGES
 import { Home } from "../pages/home";
@@ -13,6 +14,7 @@ export {
   Navigation,
   MovieCard,
   MovieSelectCard,
+  MovieSelectList,
   CardMenu,
   Home,
   Settings,

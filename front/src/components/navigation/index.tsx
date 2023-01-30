@@ -18,7 +18,13 @@ import { ListItemText } from "@mui/material/";
 import AddHomeIcon from "@mui/icons-material/AddHome";
 import Settings from "@mui/icons-material/Settings";
 import MenuIcon from "@mui/icons-material/Menu";
+import { PRIMARY_BG } from "../themes";
+import { styled } from "@mui/material/styles";
 
+
+const Header = styled(AppBar)(({  }) => ({
+  backgroundColor: PRIMARY_BG,
+}));
 export const Navigation = () => {
   const [isOpenDrawer, isSetOpenDrawer] = useState<boolean>(false);
 
@@ -28,8 +34,12 @@ export const Navigation = () => {
     <Box sx={{ width: 250 }} role="presentation">
       <List>
         {["Home", "Settings"].map((text: string, index: number) => (
-          <Button component={RouterLink} to={index === 0 ? "/" : `/${text}`}>
-            <ListItem key={text} disablePadding>
+          <Button
+            key={text}
+            component={RouterLink}
+            to={index === 0 ? "/" : `/${text}`}
+          >
+            <ListItem disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   {index % 2 === 0 ? <AddHomeIcon /> : <Settings />}
@@ -43,9 +53,9 @@ export const Navigation = () => {
     </Box>
   );
   return (
-    <div className="App">
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+   
+      <Box sx={{ flexGrow: 1  }}>
+        <Header position="static">
           <Drawer
             sx={{ width: 250 }}
             anchor={"left"}
@@ -83,6 +93,7 @@ export const Navigation = () => {
             <Box sx={{ display: { xs: "none", sm: "block", color: "#fff" } }}>
               {navItems.map((item: string, index: number) => (
                 <Button
+                  key={index}
                   component={RouterLink}
                   sx={{ color: "#fff" }}
                   to={index === 0 ? "/" : `/${item}`}
@@ -92,8 +103,8 @@ export const Navigation = () => {
               ))}
             </Box>
           </Toolbar>
-        </AppBar>
+        </Header>
       </Box>
-    </div>
+   
   );
 };
