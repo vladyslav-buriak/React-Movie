@@ -6,6 +6,7 @@ import { Home } from "./components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Container } from "@mui/material";
 import { Box } from "@mui/material";
+import { Recommend } from "./pages/recommend";
 
 const App: FC = () => {
   return (
@@ -23,6 +24,7 @@ const App: FC = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/settings" element={<Settings />} />
+              <Route path="/recommend" element={<Recommend />} />
             </Routes>
           </Container>
         </BrowserRouter>

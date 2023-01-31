@@ -12,6 +12,7 @@ import { NoSelect } from "../../components";
 import { MovieSelectList } from "../../components/";
 import { SkeletonMovies } from "../../components/UI/";
 import { PaginationRounded } from "../../components/UI/";
+import { MovieForm } from "../../components/MovieForm";
 
 const SelectWrapp = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
@@ -23,6 +24,7 @@ const SelectWrapp = styled(Paper)(({ theme }) => ({
   right:0,
   display: "flex",
   flexDirection: "column",
+  padding:'1rem'
 }));
 
 export const Home = () => {
@@ -35,6 +37,12 @@ export const Home = () => {
   const handleChange = (e: React.ChangeEvent<unknown> | null, p: number) => {
     setcurrentPage(p);
   };
+
+  const getQueryString = () =>{
+     let queryString ='http://localhost:3000/recommend';
+     let ids= selectedMovie.map(movie => movie.id)
+     console.log(queryString)
+  }
 
   return (
     <Box mt={6}>
@@ -82,7 +90,7 @@ export const Home = () => {
                 selectedMovie={selectedMovie}
               />
             )}
-            <input type="text" />
+           <MovieForm getQueryString={getQueryString}/>
           </SelectWrapp>
         </Grid>
       </Grid>

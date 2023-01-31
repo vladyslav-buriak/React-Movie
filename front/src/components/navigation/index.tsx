@@ -21,14 +21,13 @@ import MenuIcon from "@mui/icons-material/Menu";
 import { PRIMARY_BG } from "../themes";
 import { styled } from "@mui/material/styles";
 
-
-const Header = styled(AppBar)(({  }) => ({
+const Header = styled(AppBar)(({}) => ({
   backgroundColor: PRIMARY_BG,
 }));
 export const Navigation = () => {
   const [isOpenDrawer, isSetOpenDrawer] = useState<boolean>(false);
 
-  const navItems: Array<string> = ["Home", "Settings", "Other"];
+  const navItems: Array<string> = ["Home", "Settings", "Recommend"];
 
   const list = () => (
     <Box sx={{ width: 250 }} role="presentation">
@@ -53,58 +52,56 @@ export const Navigation = () => {
     </Box>
   );
   return (
-   
-      <Box sx={{ flexGrow: 1  }}>
-        <Header position="static">
-          <Drawer
-            sx={{ width: 250 }}
-            anchor={"left"}
-            open={isOpenDrawer}
-            onClose={() => {
-              isSetOpenDrawer(false);
-            }}
-          >
-            {list()}
-          </Drawer>
-          <Toolbar>
-            <Hidden only={["xl", "lg", "md"]}>
-              <IconButton
-                onClick={() => isSetOpenDrawer(true)}
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                sx={{ mr: 2 }}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Hidden>
-
-            <Link
-              sx={{ flexGrow: "1", display: "block" }}
-              component={RouterLink}
-              to={"/"}
+    <Box sx={{ flexGrow: 1 }}>
+      <Header position="static">
+        <Drawer
+          sx={{ width: 250 }}
+          anchor={"left"}
+          open={isOpenDrawer}
+          onClose={() => {
+            isSetOpenDrawer(false);
+          }}
+        >
+          {list()}
+        </Drawer>
+        <Toolbar>
+          <Hidden only={["xl", "lg", "md"]}>
+            <IconButton
+              onClick={() => isSetOpenDrawer(true)}
+              size="large"
+              edge="start"
+              color="inherit"
+              aria-label="menu"
+              sx={{ mr: 2 }}
             >
-              <Typography sx={{ color: "#fff" }} variant="h6" component="div">
-                Movie-APP
-              </Typography>
-            </Link>
+              <MenuIcon />
+            </IconButton>
+          </Hidden>
 
-            <Box sx={{ display: { xs: "none", sm: "block", color: "#fff" } }}>
-              {navItems.map((item: string, index: number) => (
-                <Button
-                  key={index}
-                  component={RouterLink}
-                  sx={{ color: "#fff" }}
-                  to={index === 0 ? "/" : `/${item}`}
-                >
-                  {item}
-                </Button>
-              ))}
-            </Box>
-          </Toolbar>
-        </Header>
-      </Box>
-   
+          <Link
+            sx={{ flexGrow: "1", display: "block" }}
+            component={RouterLink}
+            to={"/"}
+          >
+            <Typography sx={{ color: "#fff" }} variant="h6" component="div">
+              Movie-APP
+            </Typography>
+          </Link>
+
+          <Box sx={{ display: { xs: "none", sm: "block", color: "#fff" } }}>
+            {navItems.map((item: string, index: number) => (
+              <Button
+                key={index}
+                component={RouterLink}
+                sx={{ color: "#fff" }}
+                to={index === 0 ? "/" : `/${item}`}
+              >
+                {item}
+              </Button>
+            ))}
+          </Box>
+        </Toolbar>
+      </Header>
+    </Box>
   );
 };
