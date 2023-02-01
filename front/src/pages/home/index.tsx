@@ -20,11 +20,11 @@ const SelectWrapp = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
   height: "calc(100vh - 200px)",
   position: "sticky",
-  top:'1rem',
-  right:0,
+  top: "1rem",
+  right: 0,
   display: "flex",
   flexDirection: "column",
-  padding:'1rem'
+  padding: "1rem",
 }));
 
 export const Home = () => {
@@ -38,11 +38,10 @@ export const Home = () => {
     setcurrentPage(p);
   };
 
-  const getQueryString = () =>{
-     let queryString ='http://localhost:3000/recommend';
-     let ids= selectedMovie.map(movie => movie.id)
-     console.log(queryString)
-  }
+  const getRecommendMovies = ({moviesList}:any) => {
+    let ids = selectedMovie.map((movie: IMovieProps) => movie.id);
+    let queryString = `http://localhost:3000/recommend?name=${moviesList}&id=${ids.join()}`;
+  };
 
   return (
     <Box mt={6}>
@@ -90,7 +89,7 @@ export const Home = () => {
                 selectedMovie={selectedMovie}
               />
             )}
-           <MovieForm getQueryString={getQueryString}/>
+            <MovieForm getRecommendMovies={getRecommendMovies} />
           </SelectWrapp>
         </Grid>
       </Grid>
