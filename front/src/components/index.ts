@@ -5,6 +5,7 @@ import { CardMenu } from "./CardMenu";
 import { MovieSelectCard } from "./MovieSelectCard";
 import { NoSelect } from "./NoSelect";
 import { MovieSelectList } from "./MovieSelectList";
+import { ModalWindow } from "./ModalWindow";
 
 //PAGES
 import { Home } from "../pages/home";
@@ -19,4 +20,5 @@ export {
   Home,
   Settings,
   NoSelect,
+  ModalWindow,
 };

@@ -2,7 +2,7 @@ import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material/";
 import { Paper } from "@mui/material/";
 import { Grid } from "@mui/material/";
-import { MovieCard } from "../../components";
+import { ModalWindow, MovieCard } from "../../components";
 import { GetMovies } from "./queries";
 import { useQuery } from "@apollo/client";
 import { IMovieProps } from "../../types";
@@ -30,6 +30,9 @@ const SelectWrapp = styled(Paper)(({ theme }) => ({
 export const Home = () => {
   const { selectedMovie, addMovie, removeMovie } = useSelectedMovies();
   const [currentPage, setcurrentPage] = useState<number>(1);
+  const [modalTitle, setModalTitle] = useState<string>("");
+  const [link, setLink] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
 
   const { loading, error, data } = useQuery(GetMovies, {
     variables: { currentPage },
@@ -38,9 +41,12 @@ export const Home = () => {
     setcurrentPage(p);
   };
 
-  const getRecommendMovies = ({moviesList}:any) => {
+  const getRecommendMovies = ({ moviesList }: any) => {
     let ids = selectedMovie.map((movie: IMovieProps) => movie.id);
     let queryString = `http://localhost:3000/recommend?name=${moviesList}&id=${ids.join()}`;
+    setModalTitle(moviesList);
+    setLink(queryString);
+    setOpen(!!ids.length);
   };
 
   return (
@@ -78,6 +84,12 @@ export const Home = () => {
               onPageChange={handleChange}
             />
           </Paper>
+          <ModalWindow
+            title={modalTitle}
+            open={open}
+            link={link}
+            setOpen={setOpen}
+          />
         </Grid>
         <Grid item xs={12} md={4}>
           <SelectWrapp>
