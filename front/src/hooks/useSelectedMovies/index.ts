@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { IMovieProps } from "../../types";
 import { useCallback } from "react";
+import { SELECTED_LENGTH } from "../../config";
 
 export const useSelectedMovies = () => {
   const [selectedMovie, setSelectedMovie] = useState<IMovieProps[]>([]);
@@ -11,7 +12,7 @@ export const useSelectedMovies = () => {
         return movie.id === arg.id;
       });
 
-      const movieLength = selectedMovie.length <= 6;
+      const movieLength = selectedMovie.length <= SELECTED_LENGTH;
       if (!find && movieLength) {
         setSelectedMovie([arg, ...selectedMovie]);
       }

@@ -6,6 +6,7 @@ import { MovieSelectCard } from "./MovieSelectCard";
 import { NoSelect } from "./NoSelect";
 import { MovieSelectList } from "./MovieSelectList";
 import { ModalWindow } from "./ModalWindow";
+import { SocialMedia } from "./SocialMedia";
 
 //PAGES
 import { Home } from "../pages/home";
@@ -21,4 +22,5 @@ export {
   Settings,
   NoSelect,
   ModalWindow,
+  SocialMedia,
 };

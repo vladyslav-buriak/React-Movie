@@ -12,13 +12,9 @@ import { useState } from "react";
 import { PRIMARY_BG } from "../themes";
 import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import { SocialMedia } from "../../components/SocialMedia";
+import { IModal } from "../../types";
 
-interface IModalProps {
-  open: boolean;
-  title: string;
-  setOpen: (value: boolean | ((prevVar: boolean) => boolean)) => void;
-  link: string;
-}
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -34,20 +30,17 @@ const style = {
   alignItems: "center",
 };
 
-export const ModalWindow: FC<IModalProps> = ({
-  open,
-  title,
-  setOpen,
-  link,
-}) => {
+export const ModalWindow: FC<IModal> = ({ open, title, setOpen, link }) => {
   const [copy, setCopy] = useState<boolean>(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCopy(false);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
+    if (copy === true) {
+      const interval = setInterval(() => {
+        setCopy(false);
+      }, 2000);
+      return () => clearInterval(interval);
+    }
+  }, [copy]);
 
   return (
     <div>
@@ -81,7 +74,7 @@ export const ModalWindow: FC<IModalProps> = ({
               alignItems: "center",
               maxWidth: 400,
               width: "100%",
-              mb: "1.25rem",
+              mb: "1.5rem",
               fontSize: "1rem",
             }}
           >
@@ -115,6 +108,20 @@ export const ModalWindow: FC<IModalProps> = ({
               </IconButton>
             </CopyToClipboard>
           </Paper>
+          <Typography
+            sx={{
+              mb: "1.25rem",
+              color: "grey",
+              fontSize: "1rem",
+              fontWeight: "bold",
+            }}
+            id="modal-modal-title"
+            variant="h6"
+            component="h3"
+          >
+            Share With Friends
+          </Typography>
+          <SocialMedia url={link} title={title} />
           {copy && (
             <Alert severity="success" sx={{ width: "200px" }}>
               <strong>Link copied</strong>

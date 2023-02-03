@@ -6,3 +6,10 @@ export interface IMovieProps {
   popularity: string;
   overview: string;
 }
+
+export interface IModal {
+  open: boolean;
+  title: string;
+  setOpen: (value: boolean | ((prevVar: boolean) => boolean)) => void;
+  link: string;
+}

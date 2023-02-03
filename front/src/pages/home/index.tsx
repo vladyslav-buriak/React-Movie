@@ -2,7 +2,6 @@ import { styled } from "@mui/material/styles";
 import { Box } from "@mui/material/";
 import { Paper } from "@mui/material/";
 import { Grid } from "@mui/material/";
-import { ModalWindow, MovieCard } from "../../components";
 import { GetMovies } from "./queries";
 import { useQuery } from "@apollo/client";
 import { IMovieProps } from "../../types";
@@ -13,6 +12,8 @@ import { MovieSelectList } from "../../components/";
 import { SkeletonMovies } from "../../components/UI/";
 import { PaginationRounded } from "../../components/UI/";
 import { MovieForm } from "../../components/MovieForm";
+import { MovieCard } from "../../components";
+import { ModalWindow } from "../../components";
 
 const SelectWrapp = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
