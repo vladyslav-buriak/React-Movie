@@ -11,14 +11,17 @@ import { IMovieProps } from "../../types";
 interface ICardProps {
   movie: IMovieProps;
   addMovie: (arg: IMovieProps) => void;
+  isCardMenu?: boolean;
 }
 
-export const MovieCard: FC<ICardProps> = ({ addMovie, movie }) => {
+export const MovieCard: FC<ICardProps> = ({ addMovie, movie, isCardMenu }) => {
   return (
     <Card sx={{ maxWidth: 300, height: 300, position: "relative" }}>
-      <CardMenu>
-        <MenuItem onClick={() => addMovie(movie)}>add film</MenuItem>
-      </CardMenu>
+      {!isCardMenu && (
+        <CardMenu>
+          <MenuItem onClick={() => addMovie(movie)}>add film</MenuItem>
+        </CardMenu>
+      )}
 
       <CardMedia
         sx={{

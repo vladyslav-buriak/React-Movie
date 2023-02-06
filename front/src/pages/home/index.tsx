@@ -73,7 +73,7 @@ export const Home = () => {
                 data.moviesDate.results.map((movie: IMovieProps) => {
                   return (
                     <Grid key={movie.id} item xs={12} sm={4} md={3} mb={3}>
-                      <MovieCard movie={movie} addMovie={addMovie} />
+                      <MovieCard movie={movie} addMovie={addMovie}  />
                     </Grid>
                   );
                 })

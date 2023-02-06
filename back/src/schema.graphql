@@ -1,5 +1,6 @@
 type Query {
   moviesDate(currentPage: Int): Movies
+  movieById(id: [Int]): [Movie]
 }
 
 type Movies {
