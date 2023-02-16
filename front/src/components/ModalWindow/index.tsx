@@ -96,7 +96,7 @@ export const ModalWindow: FC<IModal> = ({ open, title, setOpen, link }) => {
               <RemoveRedEyeIcon />
             </IconButton>
             <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
-            <CopyToClipboard text={title} onCopy={() => setCopy(true)}>
+            <CopyToClipboard text={link} onCopy={() => setCopy(true)}>
               <IconButton
                 sx={{
                   p: "5px",

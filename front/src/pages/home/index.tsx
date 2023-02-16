@@ -5,7 +5,7 @@ import { Grid } from "@mui/material/";
 import { GetMovies } from "./queries";
 import { useQuery } from "@apollo/client";
 import { IMovieProps } from "../../types";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useSelectedMovies } from "../../hooks/useSelectedMovies";
 import { NoSelect } from "../../components";
 import { MovieSelectList } from "../../components/";
@@ -14,6 +14,7 @@ import { PaginationRounded } from "../../components/UI/";
 import { MovieForm } from "../../components/MovieForm";
 import { MovieCard } from "../../components";
 import { ModalWindow } from "../../components";
+import { AppContext } from "../../providers/AppContext";
 
 const SelectWrapp = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
@@ -34,9 +35,12 @@ export const Home = () => {
   const [modalTitle, setModalTitle] = useState<string>("");
   const [link, setLink] = useState<string>("");
   const [open, setOpen] = useState<boolean>(false);
+  const { state } = useContext(AppContext);
+  const lang = state.locale;
 
   const { loading, error, data } = useQuery(GetMovies, {
-    variables: { currentPage },
+    variables: { currentPage, lang },
+    fetchPolicy: "no-cache",
   });
   const handleChange = (e: React.ChangeEvent<unknown> | null, p: number) => {
     setcurrentPage(p);
@@ -54,7 +58,7 @@ export const Home = () => {
     <Box mt={6}>
       <Grid container spacing={6}>
         <Grid item xs={12} md={12}>
-          <Paper>Filter</Paper>
+          <Paper></Paper>
         </Grid>
         <Grid item xs={12} md={8}>
           <Paper>
@@ -73,7 +77,7 @@ export const Home = () => {
                 data.moviesDate.results.map((movie: IMovieProps) => {
                   return (
                     <Grid key={movie.id} item xs={12} sm={4} md={3} mb={3}>
-                      <MovieCard movie={movie} addMovie={addMovie}  />
+                      <MovieCard movie={movie} addMovie={addMovie} />
                     </Grid>
                   );
                 })

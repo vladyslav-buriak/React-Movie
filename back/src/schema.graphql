@@ -1,5 +1,5 @@
 type Query {
-  moviesDate(currentPage: Int): Movies
+  moviesDate(currentPage: Int ,lang:String): Movies
   movieById(id: [Int]): [Movie]
 }
 

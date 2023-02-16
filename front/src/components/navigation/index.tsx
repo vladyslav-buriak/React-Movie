@@ -1,4 +1,6 @@
-import React from "react";
+import { FC } from "react";
+import React, { useContext } from "react";
+import { MenuLanguage } from "./MenuLanguage";
 import { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { AppBar } from "@mui/material/";
@@ -15,19 +17,30 @@ import { ListItem } from "@mui/material/";
 import { ListItemButton } from "@mui/material/";
 import { ListItemIcon } from "@mui/material/";
 import { ListItemText } from "@mui/material/";
+import { getRgbaColor, PRIMARY_BG_GRADIENT } from "../themes";
+import { FormattedMessage } from "react-intl";
+import { styled } from "@mui/material/styles";
+import { AppContext } from "../../providers/AppContext";
+import { useCallback } from "react";
 import AddHomeIcon from "@mui/icons-material/AddHome";
 import Settings from "@mui/icons-material/Settings";
 import MenuIcon from "@mui/icons-material/Menu";
-import { PRIMARY_BG } from "../themes";
-import { styled } from "@mui/material/styles";
 
 const Header = styled(AppBar)(({}) => ({
-  backgroundColor: PRIMARY_BG,
+  background: PRIMARY_BG_GRADIENT,
 }));
-export const Navigation = () => {
-  const [isOpenDrawer, isSetOpenDrawer] = useState<boolean>(false);
 
-  const navItems: Array<string> = ["Home", "Settings", "Recommend"];
+export const Navigation: FC = () => {
+  const { dispatch } = useContext(AppContext);
+  const [isOpenDrawer, isSetOpenDrawer] = useState<boolean>(false);
+  const navItems: Array<string> = ["home", "settings", "recommends"];
+
+  const setLanguage = useCallback((locale: string) => {
+    dispatch({
+      type: "SET_LOCALE_LANGUAGE",
+      locale,
+    });
+  }, []);
 
   const list = () => (
     <Box sx={{ width: 250 }} role="presentation">
@@ -79,26 +92,48 @@ export const Navigation = () => {
           </Hidden>
 
           <Link
-            sx={{ flexGrow: "1", display: "block" }}
+            sx={{ flexGrow: "1", display: "block", textDecoration: "none" }}
             component={RouterLink}
             to={"/"}
           >
-            <Typography sx={{ color: "#fff" }} variant="h6" component="div">
-              Movie-APP
+            <Typography
+              sx={{
+                color: "#fff",
+                fontFamily: "Montserrat ,sans-serif",
+                fontWeight: 600,
+                textTransform: "uppercase",
+                fontSize: "1.25rem",
+                "&:hover": {
+                  color: getRgbaColor('.7')
+                },
+              }}
+              variant="h6"
+              component="div"
+            >
+              <FormattedMessage id={"logo"} />
             </Typography>
           </Link>
 
-          <Box sx={{ display: { xs: "none", sm: "block", color: "#fff" } }}>
+          <Box sx={{ display: { xs: "none", sm: "flex", color: "#fff" } }}>
             {navItems.map((item: string, index: number) => (
               <Button
                 key={index}
                 component={RouterLink}
-                sx={{ color: "#fff" }}
+                sx={{
+                  color: "#fff",
+                  margin: "0 .5rem",
+                  "&:hover": {
+                    color: getRgbaColor(".7"),
+                    background: "none",
+                  },
+                }}
                 to={index === 0 ? "/" : `/${item}`}
               >
-                {item}
+                <FormattedMessage id={`navigation.${item}`} />
               </Button>
             ))}
+
+            <MenuLanguage setLanguage={setLanguage} />
           </Box>
         </Toolbar>
       </Header>

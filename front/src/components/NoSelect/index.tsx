@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { FormattedMessage } from "react-intl";
 
 const NoSelectWrapp = styled(Box)(({ theme }) => ({
   height: "100%",
@@ -22,7 +23,7 @@ export const NoSelect = () => {
         src="no.png"
       ></Box>
       <Typography variant="h5" mt={2}>
-        No selected movies
+        <FormattedMessage id="No_selected_movies" />
       </Typography>
     </NoSelectWrapp>
   );
