@@ -1,0 +1,14 @@
+{
+    "name": "movies-rec",
+    "version": "1.0.0",
+    "description": "movie recommendation app:react graphql",
+    "main": "./back/src/index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Vladyslav Buriak",
+    "license": "MIT",
+    "engines": {
+      "node": "18.x"
+    }
+  }
