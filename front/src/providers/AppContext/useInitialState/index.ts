@@ -1,10 +1,14 @@
+import { useSearchParams } from "react-router-dom";
 import { LOCALES } from "../../../config";
 import { getLsLanguage } from "../../../localStorage";
-export const useInitialState = () => {
-  const initialState = {
-    //@ts-ignore
-    locale: getLsLanguage("locale") || LOCALES.UKRANIAN,
-  };
 
-  return { initialState };
+export const useInitialState = () => {
+  const [searchParams] = useSearchParams();
+
+  return {
+    locale:
+      getLsLanguage("locale") ||
+      searchParams.get("language") ||
+      LOCALES.UKRANIAN,
+  };
 };

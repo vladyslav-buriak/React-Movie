@@ -104,7 +104,7 @@ export const Navigation: FC = () => {
                 textTransform: "uppercase",
                 fontSize: "1.25rem",
                 "&:hover": {
-                  color: getRgbaColor('.7')
+                  color: getRgbaColor(".7"),
                 },
               }}
               variant="h6"

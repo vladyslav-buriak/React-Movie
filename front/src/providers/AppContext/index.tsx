@@ -21,7 +21,7 @@ const reducer = (state: localesState, action: localesAction) => {
 };
 
 export const AppContextProvider = ({ children }: childType) => {
-  const { initialState } = useInitialState();
+  const initialState = useInitialState();
 
   const [state, dispatch] = useReducer(reducer, initialState);
 

@@ -10,10 +10,10 @@ import { Alert } from "@mui/material";
 import { FC, useEffect } from "react";
 import { useState } from "react";
 import { PRIMARY_BG } from "../themes";
-import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
-import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import { SocialMedia } from "../../components/SocialMedia";
 import { IModal } from "../../types";
+import RemoveRedEyeIcon from "@mui/icons-material/RemoveRedEye";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 const style = {
   position: "absolute" as "absolute",

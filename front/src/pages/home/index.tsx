@@ -48,7 +48,7 @@ export const Home = () => {
 
   const getRecommendMovies = ({ moviesList }: any) => {
     let ids = selectedMovie.map((movie: IMovieProps) => movie.id);
-    let queryString = `http://localhost:3000/recommend?name=${moviesList}&id=${ids.join()}`;
+    let queryString = `http://localhost:3000/recommend?name=${moviesList}&id=${ids.join()}&language=${lang}`;
     setModalTitle(moviesList);
     setLink(queryString);
     setOpen(!!ids.length);

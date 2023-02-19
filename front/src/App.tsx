@@ -12,10 +12,10 @@ import { ApolloProvider } from "@apollo/client";
 import { ApolloClient } from "@apollo/client";
 import { createHttpLink } from "@apollo/client";
 import { InMemoryCache } from "@apollo/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000",
+  uri: "http://localhost:4000/graphql",
 });
 const client = new ApolloClient({
   link: httpLink,
@@ -35,17 +35,15 @@ const App: FC = () => {
       >
         <I18nProvider locale={state.locale}>
           <ApolloProvider client={client}>
-            <BrowserRouter>
-              <CssBaseline />
-              <Navigation />
-              <Container maxWidth="lg">
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/settings" element={<Settings />} />
-                  <Route path="/recommend" element={<Recommend />} />
-                </Routes>
-              </Container>
-            </BrowserRouter>
+            <CssBaseline />
+            <Navigation />
+            <Container maxWidth="lg">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/settings" element={<Settings />} />
+                <Route path="/recommend" element={<Recommend />} />
+              </Routes>
+            </Container>
           </ApolloProvider>
         </I18nProvider>
       </Box>

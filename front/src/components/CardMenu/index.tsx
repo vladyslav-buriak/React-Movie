@@ -4,7 +4,6 @@ import { Menu } from "@mui/material/";
 import { useState } from "react";
 import { childType } from "../../types";
 
-
 export const CardMenu = ({ children }: childType) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [position, setPosition] = useState<null | HTMLElement>(null);
