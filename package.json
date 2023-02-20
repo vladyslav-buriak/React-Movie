@@ -1,16 +1,19 @@
 {
-    "name": "node-example",
+    "name": "movies-recommendation",
     "version": "1.0.0",
-    "description": "This example is so cool.",
+    "description": "app about recommends movies",
     "main": "./back/src/index",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start":"node back/src/index.js",
+      "build":"cd front && npm run build",
+      "install":"cd front && npm install --legacy-peer-deps && cd ../back && npm install"
     },
     "keywords": [
       "example",
       "heroku"
     ],
-    "author": "jane-doe",
+    "author": "Buriak Vladyslav",
     "license": "MIT",
     "dependencies": {
       "express": "^4.9.8"
