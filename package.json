@@ -7,7 +7,7 @@
       "test": "echo \"Error: no test specified\" && exit 1",
       "start":"node ./back/src/index",
       "build":"cd front && npm run build",
-      "install":"cd front  && npm install --legacy-peer-deps && cd ../back && npm install"
+      "install":"cd front  && npm install  && cd ../back && npm install"
     },
     "keywords": [
       "example",
