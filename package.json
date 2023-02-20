@@ -7,7 +7,7 @@
       "test": "echo \"Error: no test specified\" && exit 1",
       "start":"node back/src/index.js",
       "build":"cd front && yarn run build",
-      "install":"cd front  && npyarnm install && cd ../back && yarn install"
+      "install":"cd front  && yarn install && cd ../back && yarn install"
     },
     "keywords": [
       "example",
