@@ -5,9 +5,9 @@
     "main": "./back/src/index",
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
-      "start":"node back/src/index.js",
-      "build":"cd front && yarn run build",
-      "install":"cd front  && yarn install && cd ../back && yarn install"
+      "start":"node ./back/src/index",
+      "build":"cd front && npm run build",
+      "install":"cd front  && npm install --legacy-peer-deps && cd ../back && npm install"
     },
     "keywords": [
       "example",
