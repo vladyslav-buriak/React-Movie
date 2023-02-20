@@ -15,7 +15,7 @@ import { InMemoryCache } from "@apollo/client";
 import { Route, Routes } from "react-router-dom";
 
 const httpLink = createHttpLink({
-  uri: "http://localhost:4000/graphql",
+  uri: `http://localhost:${window.location.href}/graphql`,
 });
 const client = new ApolloClient({
   link: httpLink,
