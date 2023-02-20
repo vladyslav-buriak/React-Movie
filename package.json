@@ -6,8 +6,8 @@
     "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
       "start":"node ./back/src/index",
-      "build":"cd front && npm run build",
-      "install":"cd front && npm install --legacy-peer-deeps  && cd ../back && npm install"
+      "build":"cd front && yarn run build",
+      "install":"cd front && yarn install --legacy-peer-deeps  && cd ../back && yarn install"
     },
     "keywords": [
       "example",
