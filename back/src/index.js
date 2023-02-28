@@ -1,5 +1,4 @@
 const fs = require("fs");
-// const path = require("path");
 const { ApolloServer } = require("apollo-server-express");
 
 const express = require("express");
@@ -17,7 +16,10 @@ const resolvers = {
   Query,
 };
 
-const  typeDefs = fs.readFileSync(path.join(__dirname, "schema.graphql"), "utf8");
+const typeDefs = fs.readFileSync(
+  path.join(__dirname, "schema.graphql"),
+  "utf8"
+);
 
 async function startApolloServer(typeDefs, resolvers) {
   const app = express();
@@ -49,8 +51,26 @@ async function startApolloServer(typeDefs, resolvers) {
     res.sendFile(path.join(__dirname, "../../front", "build", "index.html"));
   });
 
-  await new Promise((resolve) => httpServer.listen({ port: process.env.PORT || 80 }, resolve));
-  console.log(`🚀 Server ready at http://localhost:${process.env.PORT || 80}${server.graphqlPath}`);
+  await new Promise((resolve) =>
+    // not production
+    //  port: 4000
+
+    // on production
+    //port: process.env.PORT || 80
+
+    httpServer.listen({ port: process.env.PORT || 80 }, resolve)
+  );
+  console.log(
+    // on production
+    // `🚀 Server ready at http://localhost:${process.env.PORT || 80}${server.graphqlPath}`
+
+    // not production
+    // `🚀 Server ready at http://localhost:${4000}${server.graphqlPath}`
+
+    `🚀 Server ready at http://localhost:${process.env.PORT || 80}${
+      server.graphqlPath
+    }`
+  );
 }
 
-startApolloServer(typeDefs,resolvers)
+startApolloServer(typeDefs, resolvers);

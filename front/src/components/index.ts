@@ -7,6 +7,7 @@ import { NoSelect } from "./NoSelect";
 import { MovieSelectList } from "./MovieSelectList";
 import { ModalWindow } from "./ModalWindow";
 import { SocialMedia } from "./SocialMedia";
+import { Filters } from "./Filters";
 
 //PAGES
 import { Home } from "../pages/home";
@@ -23,4 +24,5 @@ export {
   NoSelect,
   ModalWindow,
   SocialMedia,
+  Filters,
 };

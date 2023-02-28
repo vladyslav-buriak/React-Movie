@@ -9,9 +9,12 @@
     "@fontsource/material-icons": "^4.5.4",
     "@fontsource/roboto": "^4.5.8",
     "@material-ui/core": "^4.12.4",
+    "@material-ui/lab": "^4.0.0-alpha.61",
     "@mui/icons-material": "^5.11.0",
+    "@mui/lab": "^5.0.0-alpha.120",
     "@mui/material": "^5.11.3",
     "@mui/styles": "^5.11.2",
+    "@storybook/react": "^6.5.15",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/react-hooks": "^8.0.1",
@@ -38,8 +41,7 @@
     "react-share": "^4.4.1",
     "react-world-flags": "^1.5.1",
     "typescript": "^4.9.4",
-    "web-vitals": "^2.1.4",
-    "@storybook/react": "^6.5.15"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",

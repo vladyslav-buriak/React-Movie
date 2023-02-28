@@ -1,8 +1,13 @@
 type Query {
-  moviesDate(currentPage: Int ,lang:String): Movies
+  moviesDate(currentPage: Int, lang: String, filterParam: MoviesFilter): Movies
   movieById(id: [Int]): [Movie]
+  movieByGenres: [Genre]
 }
 
+input MoviesFilter {
+  sortBy: String
+  sortType: String
+}
 type Movies {
   page: Int!
   totalResults: Int!

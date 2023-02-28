@@ -1,8 +1,12 @@
 import { gql } from "@apollo/client";
 
 export const GetMovies = gql`
-  query($currentPage:Int,$lang:String) {
-    moviesDate(currentPage:$currentPage,lang:$lang) {
+  query ($currentPage: Int, $lang: String, $filterParam: MoviesFilter) {
+    moviesDate(
+      currentPage: $currentPage
+      lang: $lang
+      filterParam: $filterParam
+    ) {
       page
       totalResults
       totalPages

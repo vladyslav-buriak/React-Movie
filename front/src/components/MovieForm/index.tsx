@@ -5,10 +5,12 @@ import { IconButton } from "@mui/material";
 import { PRIMARY_BG } from "../themes";
 import { Divider } from "@mui/material";
 import { Typography } from "@mui/material";
+import { FormattedMessage } from "react-intl";
 
 type ValidateType = {
   moviesList: string;
 };
+
 
 export const MovieForm = ({ getRecommendMovies }: any) => (
   <Form
@@ -23,7 +25,8 @@ export const MovieForm = ({ getRecommendMovies }: any) => (
       return errors;
     }}
     render={({ handleSubmit }) => (
-      <form onSubmit={handleSubmit}>
+      //@ts-ignore
+      <form   onSubmit={handleSubmit} >
         <div>
           <Field
             name="moviesList"
@@ -41,16 +44,22 @@ export const MovieForm = ({ getRecommendMovies }: any) => (
                     } `,
                   }}
                 >
-                  <InputBase
-                    sx={{
-                      paddingLeft: "0.5rem",
-                      fontSize: "0.75rem",
-                      flexGrow: 1,
-                    }}
-                    multiline={true}
-                    placeholder="your movie list"
-                    {...input}
-                  />
+                  <FormattedMessage id={"your_movie_list"}>
+                     {placeholder =>
+                         <InputBase
+                         sx={{
+                           paddingLeft: "0.5rem",
+                           fontSize: "0.75rem",
+                           flexGrow: 1,
+                         }}
+                         multiline={true}
+                         //@ts-ignore
+                         placeholder={placeholder}
+                         {...input}
+                       />
+                     }
+                  </FormattedMessage>
+              
                   {meta.error && meta.touched && (
                     <Typography
                       sx={{

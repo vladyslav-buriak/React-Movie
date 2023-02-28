@@ -15,6 +15,8 @@ import { MovieForm } from "../../components/MovieForm";
 import { MovieCard } from "../../components";
 import { ModalWindow } from "../../components";
 import { AppContext } from "../../providers/AppContext";
+import { Filters } from "../../components";
+import { useFilter } from "../../components/Filters/useFilter";
 
 const SelectWrapp = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
@@ -31,6 +33,7 @@ const SelectWrapp = styled(Paper)(({ theme }) => ({
 
 export const Home = () => {
   const { selectedMovie, addMovie, removeMovie } = useSelectedMovies();
+  const { filterParam, sendData } = useFilter();
   const [currentPage, setcurrentPage] = useState<number>(1);
   const [modalTitle, setModalTitle] = useState<string>("");
   const [link, setLink] = useState<string>("");
@@ -38,8 +41,9 @@ export const Home = () => {
   const { state } = useContext(AppContext);
   const lang = state.locale;
 
+
   const { loading, error, data } = useQuery(GetMovies, {
-    variables: { currentPage, lang },
+    variables: { currentPage, lang, filterParam },
     fetchPolicy: "no-cache",
   });
   const handleChange = (e: React.ChangeEvent<unknown> | null, p: number) => {
@@ -48,7 +52,10 @@ export const Home = () => {
 
   const getRecommendMovies = ({ moviesList }: any) => {
     let ids = selectedMovie.map((movie: IMovieProps) => movie.id);
-    let queryString = `http://localhost:5000/recommend?name=${moviesList}&id=${ids.join()}&language=${lang}`;
+    // not production
+    // let queryString = `http://localhost:4000/recommend?name=${moviesList}&id=${ids.join()}&language=${lang}`;
+
+    let queryString = `http://localhost:4000/recommend?name=${moviesList}&id=${ids.join()}&language=${lang}`;
     setModalTitle(moviesList);
     setLink(queryString);
     setOpen(!!ids.length);
@@ -57,8 +64,12 @@ export const Home = () => {
   return (
     <Box mt={6}>
       <Grid container spacing={6}>
-        <Grid item xs={12} md={12}>
-          <Paper></Paper>
+       
+        <Grid item xs={12} md={6}>
+
+          <Paper>
+          <Filters onSubmit={sendData} initialValues={filterParam}   />
+          </Paper>
         </Grid>
         <Grid item xs={12} md={8}>
           <Paper>

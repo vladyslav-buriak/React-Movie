@@ -31,3 +31,9 @@ export type contextType = {
   state: localesState;
   dispatch: ({ type, locale }: { type: string; locale: string }) => void;
 };
+
+
+export type FilterType ={
+  sortBy: string;
+  sortType: string;
+}
