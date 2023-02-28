@@ -55,7 +55,7 @@ export const Home = () => {
     // not production
     // let queryString = `http://localhost:4000/recommend?name=${moviesList}&id=${ids.join()}&language=${lang}`;
 
-    let queryString = `http://localhost:4000/recommend?name=${moviesList}&id=${ids.join()}&language=${lang}`;
+    let queryString = `${window.location.origin}/recommend?name=${moviesList}&id=${ids.join()}&language=${lang}`;
     setModalTitle(moviesList);
     setLink(queryString);
     setOpen(!!ids.length);
